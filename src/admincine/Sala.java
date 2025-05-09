@@ -9,9 +9,10 @@ public abstract class Sala {
 	private String tipoProyeccion;
 	private int fila;
 	private int columna;
+	private ArrayList<Funcion> funciones;
 	
 	
-	public Sala(String id, ArrayList<Silla> sillas, int capacidad, String tipoProyeccion, int fila, int columna) {
+	public Sala(String id, ArrayList<Silla> sillas, int capacidad, String tipoProyeccion, int fila, int columna, ArrayList<Funcion> funciones) {
 		super();
 		this.id = id;
 		this.sillas = sillas;
@@ -19,6 +20,7 @@ public abstract class Sala {
 		this.tipoProyeccion = tipoProyeccion;
 		this.fila = fila;
 		this.columna = columna;
+		this.funciones = funciones;
 	}
 	public Sala() {
 		super();
@@ -28,6 +30,7 @@ public abstract class Sala {
 		this.tipoProyeccion = "";
 		this.fila = 0;
 		this.columna = 0;
+		this.funciones = new ArrayList<>();
 		
 		
 		
@@ -67,6 +70,12 @@ public abstract class Sala {
 	}
 	public void setColumna(int columna) {
 		this.columna = columna;
+	}
+	public ArrayList<Funcion> getFunciones() {
+		return funciones;
+	}
+	public void setFunciones(ArrayList<Funcion> funciones) {
+		this.funciones = funciones;
 	}
 	
 	
