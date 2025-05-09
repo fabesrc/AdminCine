@@ -6,14 +6,12 @@ public class Pelicula {
 	private String director;
 
 	public Pelicula(String nombrePeli, String minDuracion, String director) {
-		super();
 		this.nombrePeli = nombrePeli;
 		this.minDuracion = minDuracion;
 		this.director = director;
 	}
 	
 	public Pelicula() {
-		super();
 		this.nombrePeli = "";
 		this.minDuracion = "";
 		this.director = "";
@@ -43,6 +41,10 @@ public class Pelicula {
 		this.director = director;
 	}
 	
+	@Override //Sobreescritura de toString para mostrar la información correcta de los objetos.
+	public String toString() {
+		return "Título: " + nombrePeli + ", duración: " + minDuracion + " minutos" + ", Director: " + director;
+	}
 	
 }
 

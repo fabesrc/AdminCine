@@ -3,22 +3,20 @@ package admincine;
 
 public class Funcion {
 	private String id;
-	private String horarioFuncion;
+	private String horario;
 	private Pelicula pelicula;
 	private Sala sala;
 	
-	public Funcion(String id, String horarioFuncion, Pelicula pelicula, Sala sala) {
-		super();
+	public Funcion(String id, String horario, Pelicula pelicula, Sala sala) {
 		this.id = id;
-		this.horarioFuncion = horarioFuncion;
+		this.horario = horario;
 		this.pelicula = pelicula;
 		this.sala = sala;
 	}
 	
 	public Funcion() {
-		super();
 		this.id = "";
-		this.horarioFuncion = "";
+		this.horario = "";
 		this.pelicula = new Pelicula();
 		this.sala =  null; // Se debe asignar explícitamente más adelante
 	}
@@ -31,12 +29,12 @@ public class Funcion {
 		this.id = id;
 	}
 
-	public String getHorarioFuncion() {
-		return horarioFuncion;
+	public String gethorario() {
+		return horario;
 	}
 
-	public void setHorarioFuncion(String horarioFuncion) {
-		this.horarioFuncion = horarioFuncion;
+	public void sethorario(String horario) {
+		this.horario = horario;
 	}
 
 	public Pelicula getPelicula() {
@@ -55,7 +53,10 @@ public class Funcion {
 		this.sala = sala;
 	}
 	
-	
+	@Override //Sobreescritura de toString para mostrar la información correcta de los objetos.
+	public String toString() {
+		return "Función número: " + id + ", Pelicula: " + pelicula + ", Horario: " + horario + ", Sala: " + sala;
+	}
 	
 	
 	
