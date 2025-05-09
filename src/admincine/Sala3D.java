@@ -4,16 +4,19 @@ import java.util.ArrayList;
 
 public class Sala3D extends Sala {
 	private String tipoGafas;
+	private int filaVIP; 
 
-	public Sala3D(String id, ArrayList<Silla> sillas, int capacidad, String tipoProyeccion, int fila, int columna,
+	public Sala3D(String id, ArrayList<Silla> sillas, int capacidad, String tipoProyeccion, int fila, int columna, ArrayList<Funcion> funciones,int filaVIP,
 			String tipoGafas) {
-		super(id, sillas, capacidad, tipoProyeccion, fila, columna);
+		super(id, sillas, capacidad, tipoProyeccion, fila, columna, funciones);
 		this.tipoGafas = tipoGafas;
+		this.filaVIP = filaVIP;
 	}
 	
 	public Sala3D() {
 		super();
 		this.tipoGafas = "";
+		this.filaVIP = 0;
 	}
 
 	public String getTipoGafas() {

@@ -6,8 +6,8 @@ public class Sala2D extends Sala {
 	private TipoSonido tipoSonido;
 
 	public Sala2D(String id, ArrayList<Silla> sillas, int capacidad, String tipoProyeccion, int fila, int columna,
-			TipoSonido tipoSonido) {
-		super(id, sillas, capacidad, tipoProyeccion, fila, columna);
+			TipoSonido tipoSonido, ArrayList<Funcion> funciones) {
+		super(id, sillas, capacidad, tipoProyeccion, fila, columna, funciones);
 		this.tipoSonido = tipoSonido;
 	}
 	public Sala2D() {
