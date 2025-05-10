@@ -2,6 +2,10 @@ package admincine;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
+
+
 public abstract class Sala {
 	private String id;
 	private ArrayList<Silla> sillas;
@@ -12,27 +16,48 @@ public abstract class Sala {
 	private ArrayList<Funcion> funciones;
 	
 	
-	public Sala(String id, ArrayList<Silla> sillas, int capacidad, String tipoProyeccion, int fila, int columna, ArrayList<Funcion> funciones) {
-		super();
-		this.id = id;
-		this.sillas = sillas;
-		this.capacidad = capacidad;
-		this.tipoProyeccion = tipoProyeccion;
-		this.fila = fila;
-		this.columna = columna;
-		this.funciones = funciones;
+	
+
+	public void inicializarSillas() {
+	    this.sillas = new ArrayList<>();
+	    
+	    if(fila >= 5 && 8 <= columna && columna <= 20 ) {
+	    	for (int i = 0; i < fila; i++) {
+	    		for (int j = 0; j < columna; j++) {
+	    			String id = "F" + i + "C" + j;
+	    			this.sillas.add(new Silla(id, i, j, null, false));	
+	    		}
+
+	        }
+	    } else {
+	    	JOptionPane.showMessageDialog(null, "La sala debe de tener mínimo 5 filas y de 8 a 20 columnas. ");   }
+	    
+	    
 	}
+	
+	
+	public Sala(String id, int capacidad, String tipoProyeccion, int fila, int columna, ArrayList<Funcion> funciones) {
+	    this.id = id;
+	    this.capacidad = capacidad;
+	    this.tipoProyeccion = tipoProyeccion;
+	    this.fila = fila;
+	    this.columna = columna;
+	    this.funciones = funciones;
+	    inicializarSillas();
+	}
+
+	
 	public Sala() {
 		super();
 		this.id = "";
-		this.sillas = new ArrayList<>();
+		
 		this.capacidad = 0;
 		this.tipoProyeccion = "";
 		this.fila = 0;
 		this.columna = 0;
 		this.funciones = new ArrayList<>();
 		
-		
+	    inicializarSillas();
 		
 	}
 	public String getId() {
