@@ -2,6 +2,8 @@ package admincine;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 
 public class AdminCine {
 	private ArrayList<Pelicula> peliculas;
@@ -19,13 +21,36 @@ public class AdminCine {
 		return true;
 	}
 	
-	// Muestra el listado de peliculas creadas.
-	public boolean verPeliculas() {
-		for(Pelicula p: peliculas) {
-			System.out.println(p);
-		}
-		return true;
+	// Muestra el listado de peliculas creadas, permite seleccionar una y retorna la pelicula seleccionada.
+	public Pelicula seleccionarPelicula() {
+		int confirmacion=0;
+		byte aux=1;
+		String peliculaSeleccionada;
+		StringBuilder cartelera = new StringBuilder(); //Se utiliza un string builder para concatenar la cartelera en un solo String y mostrar en un solo JOptionPane.
+		do{			
+			for(Pelicula p: peliculas) {
+				cartelera.append(aux + ": ").append(p).append("\n"); // Se concatena cada una de las películas.
+				aux++;
+			}
+			
+			cartelera.append("\n" + "Seleccione la película deseada (ingrese el número correspondiente)");
+			
+			peliculaSeleccionada=(JOptionPane.showInputDialog(null, cartelera, "Seleccione una película: ", JOptionPane.INFORMATION_MESSAGE));
+			
+			if(peliculaSeleccionada==null) {
+				//Aqui se debe retornar al usuario hacia el menu.
+				System.out.println();
+			}else {
+				confirmacion= JOptionPane.showInternalConfirmDialog(null,"Usted seleccionó la película: \n" + peliculas.get(Byte.parseByte(peliculaSeleccionada)-1), "Confirmación de selección de película", 0, 2); //Retorna 0 si es positivo o 1 si es negativo
+				System.out.println(confirmacion);
+				if(confirmacion == 1) {
+					cartelera.setLength(0); //Se reinicia el StringBuilder Cartelera en caso que no haya sido la película correcta.
+					aux=1; //se reinicia para seguir mostrando el orden correcto de las películas.
+				}			}
+		}while(confirmacion!=0);
+		return peliculas.get(Byte.parseByte(peliculaSeleccionada)-1);
 	}
+	
 	
 	//Este método es necesario para buscar una película y agregarla al crear función.
 	public Pelicula buscarPelicula(String pelicula) {
@@ -34,7 +59,7 @@ public class AdminCine {
 				return p;
 			}
 		}
-		System.out.println("La película no se encuentra en el listado disponible");// 
+		JOptionPane.showMessageDialog(null, "La película no se encuentra en el listado disponible");
 		return null;
 	}
 	

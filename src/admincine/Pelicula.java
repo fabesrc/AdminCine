@@ -43,7 +43,7 @@ public class Pelicula {
 	
 	@Override //Sobreescritura de toString para mostrar la información correcta de los objetos.
 	public String toString() {
-		return "Título: " + nombrePeli + ", duración: " + minDuracion + " minutos" + ", Director: " + director;
+		return "Título: " + nombrePeli + ", Duración: " + minDuracion + " Minutos" + ", Director: " + director;
 	}
 	
 }
