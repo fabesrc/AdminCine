@@ -4,14 +4,17 @@ import javax.swing.JOptionPane;
 
 public class Main {
 
-    public static void main(String[] args) {
-        AdminCine admin = new AdminCine();
+public static void main(String[] args) {
+		AdminCine admin = new AdminCine();
+		
+		admin.crearPelicula("Pulp Fiction", "160", "Tarantino.");
+		admin.crearPelicula("Interestelar", "220", "Nolan.");
+		admin.crearPelicula("Titanic", "190", "Cameron");
         
         int opcion = 0;
-
+        
         do {
-            mostrarMenu();
-            String entrada = JOptionPane.showInputDialog(null, "Ingrese la opción que desea realizar: ");
+            /*String entrada = JOptionPane.showInputDialog(null, "Ingrese la opción que desea realizar: ");
             if (entrada == null || entrada.isBlank()) return;
 
             try {
@@ -19,14 +22,23 @@ public class Main {
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Entrada inválida. Por favor ingrese un número.");
                 continue;
-            }
+            }*/
 
-            switch (opcion) {
-                case 1:
-                    // admin.crearPelicula(...)
+            switch (seleccionarMenu()) {
+                case 1: //Crear Pelicula
+                	String nombrePelicula = JOptionPane.showInputDialog("Ingrese el nombre de la película.");
+                	String duracionPelicula = JOptionPane.showInputDialog("Ingrese la duración de la película en total de minutos (Ej: 120).");
+                	String director = JOptionPane.showInputDialog("Ingrese el nombre del director de la película.");
+                	admin.crearPelicula(nombrePelicula, duracionPelicula, director);
+                	admin.verPeliculas();
                     break;
-                case 2:
-                    
+                case 2: //Crear funcion.
+                    String idFuncion = JOptionPane.showInputDialog("Ingrese el identificador de la funcion.");
+                    String horarioFuncion = JOptionPane.showInputDialog("Ingrese el horario de la funcion.");
+                    Pelicula pelicula= admin.seleccionarPelicula();
+                    Sala2D sala2D= new Sala2D(); //Para probar la creación de la funcion.
+                    admin.crearFuncion(idFuncion, horarioFuncion, pelicula, sala2D);
+                    admin.verFunciones();
                     break;
                 case 3:
                     break;
@@ -46,8 +58,13 @@ public class Main {
         } while (opcion != 0);
     }
 
-    public static void mostrarMenu() {
-        JOptionPane.showMessageDialog(null,
+    public static byte seleccionarMenu() {
+    	StringBuilder menu = new StringBuilder();
+        menu.append("1: Crear Película.\n2: Crear Función. \n0: Salir del sistema."); //Para agregar más opciones al menú se debe hacer aquí y seguir la estructura.
+    	String opcion=(JOptionPane.showInputDialog(null, menu, "Seleccione una opcion: ", JOptionPane.INFORMATION_MESSAGE));
+        return Byte.parseByte(opcion);
+    	
+    	/*JOptionPane.showMessageDialog(null,
             "===== MENÚ CINE =====\n" +
             "1.  \n" +
             "2.  \n" +
@@ -56,6 +73,6 @@ public class Main {
             "5.  \n" +
             "6.  \n" +
             "0. Salir"
-        );
+        );*/
     }
 }
