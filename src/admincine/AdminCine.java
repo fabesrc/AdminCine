@@ -39,7 +39,7 @@ public class AdminCine {
 			
 			if(peliculaSeleccionada==null) {
 				//Aqui se debe retornar al usuario hacia el menu.
-				System.out.println();
+				Main.seleccionarMenu();
 			}else {
 				confirmacion= JOptionPane.showInternalConfirmDialog(null,"Usted seleccionó la película: \n" + peliculas.get(Byte.parseByte(peliculaSeleccionada)-1), "Confirmación de selección de película", 0, 2); //Retorna 0 si es positivo o 1 si es negativo
 				System.out.println(confirmacion);
@@ -53,20 +53,22 @@ public class AdminCine {
 	
 	
 	//Este método es necesario para buscar una película y agregarla al crear función.
-	public Pelicula buscarPelicula(String pelicula) {
+	public boolean verPeliculas() {
 		for(Pelicula p: peliculas) {
-			if(p.getNombrePeli().equalsIgnoreCase(pelicula)) {
-				return p;
-			}
+			System.out.println(p);
 		}
-		JOptionPane.showMessageDialog(null, "La película no se encuentra en el listado disponible");
-		return null;
+		return true;
 	}
 	
 	
 	//Para crear una funcion se depende de las clases sala y pelicula.
 	public boolean crearFuncion(String id, String horario, Pelicula pelicula, Sala sala) {
-		funciones.add(new Funcion(id, horario, pelicula, sala));		
+		funciones.add(new Funcion(id, horario, pelicula, sala));
+		if(funciones.getLast().getId().equals(id)){
+			JOptionPane.showInternalMessageDialog(null, "La función se ha creado de forma correcta.", "Confirmación de función creada", 1);
+		}else {
+			JOptionPane.showInternalMessageDialog(null, "Ha ocurrido un error al crear la función, por favor intente de nuevo.", "Confirmación de función creada", 0);
+		}
 		return true;
 	}
 	
