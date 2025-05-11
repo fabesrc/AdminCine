@@ -5,9 +5,8 @@ import java.util.ArrayList;
 public class Sala2D extends Sala {
 	private TipoSonido tipoSonido;
 
-	public Sala2D(String id, int capacidad, String tipoProyeccion, int fila, int columna,
-			TipoSonido tipoSonido, ArrayList<Funcion> funciones) {
-		super(id, capacidad, tipoProyeccion, fila, columna, funciones);
+	public Sala2D(String id, int capacidad, String tipoProyeccion, int fila, int columna, TipoSonido tipoSonido) {
+		super(id, capacidad, tipoProyeccion, fila, columna);
 		this.tipoSonido = tipoSonido;
 	}
 	public Sala2D() {
@@ -22,5 +21,8 @@ public class Sala2D extends Sala {
 		this.tipoSonido = tipoSonido;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return super.toString() + ", Tipo Sonido: " + tipoSonido;
+	}
 }

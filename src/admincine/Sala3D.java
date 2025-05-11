@@ -6,9 +6,8 @@ public class Sala3D extends Sala {
 	private String tipoGafas;
 	private int filaVIP; 
 
-	public Sala3D(String id, int capacidad, String tipoProyeccion, int fila, int columna, ArrayList<Funcion> funciones,int filaVIP,
-			String tipoGafas) {
-		super(id, capacidad, tipoProyeccion, fila, columna, funciones);
+	public Sala3D(String id, int capacidad, String tipoProyeccion, int fila, int columna, int filaVIP, String tipoGafas) {
+		super(id, capacidad, tipoProyeccion, fila, columna);
 		this.tipoGafas = tipoGafas;
 		this.filaVIP = filaVIP;
 	}

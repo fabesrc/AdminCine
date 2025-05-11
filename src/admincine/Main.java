@@ -11,7 +11,7 @@ public static void main(String[] args) {
 		admin.crearPelicula("Interestelar", "220", "Nolan.");
 		admin.crearPelicula("Titanic", "190", "Cameron");
         
-        int opcion = 0;
+		byte opcion;
         
         do {
             /*String entrada = JOptionPane.showInputDialog(null, "Ingrese la opción que desea realizar: ");
@@ -23,8 +23,8 @@ public static void main(String[] args) {
                 JOptionPane.showMessageDialog(null, "Entrada inválida. Por favor ingrese un número.");
                 continue;
             }*/
-
-            switch (seleccionarMenu()) {
+        	opcion= seleccionarMenu();
+            switch (opcion) {
                 case 1: //Crear Pelicula
                 	String nombrePelicula = JOptionPane.showInputDialog("Ingrese el nombre de la película.");
                 	String duracionPelicula = JOptionPane.showInputDialog("Ingrese la duración de la película en total de minutos (Ej: 120).");
@@ -36,13 +36,22 @@ public static void main(String[] args) {
                     String idFuncion = JOptionPane.showInputDialog("Ingrese el identificador de la funcion.");
                     String horarioFuncion = JOptionPane.showInputDialog("Ingrese el horario de la funcion.");
                     Pelicula pelicula= admin.seleccionarPelicula();
-                    Sala2D sala2D= new Sala2D(); //Para probar la creación de la funcion.
+                    Sala2D sala2D= new Sala2D("Sala 1", 150, "2D", 8, 20, TipoSonido.ESTEREO); //Para probar la creación de la funcion.
                     admin.crearFuncion(idFuncion, horarioFuncion, pelicula, sala2D);
                     admin.verFunciones();
                     break;
                 case 3:
+                	admin.crearSala2d("Sala 1 2D", 150, "Proyeccion 2D", 8, 20, TipoSonido.ESTEREO);
+                	/*String idSala = JOptionPane.showInputDialog("Ingrese el identificador de la sala."); 
+                    int capacidad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la capacidad de publico de la sala."));
+                    String tipoProyeccion= JOptionPane.showInputDialog("Ingrese el tipo de proyección de la sala.");
+                    int filas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad filas de la sala."));
+                    int columnas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de columnas de la sala."));
+                    String tipoSonido = JOptionPane.showInputDialog("Seleccione el tipo de sonido de la sala.")
+                    */
                     break;
                 case 4:
+                	admin.verSalas();
                     break;
                 case 5:
                     break;
@@ -60,9 +69,10 @@ public static void main(String[] args) {
 
     public static byte seleccionarMenu() {
     	StringBuilder menu = new StringBuilder();
-        menu.append("1: Crear Película.\n2: Crear Función. \n0: Salir del sistema."); //Para agregar más opciones al menú se debe hacer aquí y seguir la estructura.
+        menu.append("1: Crear Película.\n2: Crear Función.\n3: Crear Sala. \n4: Ver salas creadas. \n0: Salir del sistema."); //Para agregar más opciones al menú se debe hacer aquí y seguir la estructura.
     	String opcion=(JOptionPane.showInputDialog(null, menu, "Seleccione una opcion: ", JOptionPane.INFORMATION_MESSAGE));
         return Byte.parseByte(opcion);
+        }
     	
     	/*JOptionPane.showMessageDialog(null,
             "===== MENÚ CINE =====\n" +
@@ -74,5 +84,4 @@ public static void main(String[] args) {
             "6.  \n" +
             "0. Salir"
         );*/
-    }
 }

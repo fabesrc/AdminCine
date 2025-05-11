@@ -36,13 +36,13 @@ public abstract class Sala {
 	}
 	
 	
-	public Sala(String id, int capacidad, String tipoProyeccion, int fila, int columna, ArrayList<Funcion> funciones) {
+	public Sala(String id, int capacidad, String tipoProyeccion, int fila, int columna) {
 	    this.id = id;
 	    this.capacidad = capacidad;
 	    this.tipoProyeccion = tipoProyeccion;
 	    this.fila = fila;
 	    this.columna = columna;
-	    this.funciones = funciones;
+	    this.funciones = new ArrayList<>();
 	    inicializarSillas();
 	}
 
@@ -96,16 +96,19 @@ public abstract class Sala {
 	public void setColumna(int columna) {
 		this.columna = columna;
 	}
+	
 	public ArrayList<Funcion> getFunciones() {
 		return funciones;
+	}	
+		
+	public void agregarFunciones(Funcion funcion) {
+		funciones.add(funcion);
 	}
-	public void setFunciones(ArrayList<Funcion> funciones) {
-		this.funciones = funciones;
+	
+	@Override
+	public String toString() {
+		return "Id Sala: " + id + ", Capacidad: " + capacidad + ", Tipo proyección: " + tipoProyeccion;
 	}
-	
-	
-	
-	
 	
 	
 	
