@@ -5,13 +5,11 @@ public class Espectador {
 	private String nombre;
 	
 	public Espectador(String id, String nombre) {
-		super();
 		this.id = id;
 		this.nombre = nombre;
 	}
 	
 	public Espectador() {
-		super();
 		this.id = "";
 		this.nombre = "";
 		
@@ -34,6 +32,9 @@ public class Espectador {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
+	@Override
+	public String toString() {
+		return "Identificación: " + id + "Nombre: " + nombre;
+	}
 
 }

@@ -29,11 +29,11 @@ public class Funcion {
 		this.id = id;
 	}
 
-	public String gethorario() {
+	public String getHorario() {
 		return horario;
 	}
 
-	public void sethorario(String horario) {
+	public void setHorario(String horario) {
 		this.horario = horario;
 	}
 
