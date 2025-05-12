@@ -9,7 +9,6 @@ public class Silla {
 	
 	
 	public Silla(String id, int fila, int columna, Espectador espectador, boolean esVacio ) {
-		super();
 		this.id = id;
 		this.fila = fila;
 		this.columna = columna;
@@ -18,7 +17,6 @@ public class Silla {
 	}
 	
 	public Silla() {
-		super();
 		this.id = "";
 		this.fila = 0;
 		this.columna = 0;
@@ -58,7 +56,7 @@ public class Silla {
 		this.espectador = espectador;
 	}
 
-	public boolean isEsVacio() {
+	public boolean getEsVacio() {
 		return esVacio;
 	}
 
@@ -66,7 +64,9 @@ public class Silla {
 		this.esVacio = esVacio;
 	}
 	
-	
+	public String toString() {
+		return "ID Sila: " + id + "Fila: " + fila + "Columna: " + columna + "Espectador: " + espectador + "¿Silla Vacía?: " + esVacio;
+	}
 	
 
 }
