@@ -8,10 +8,12 @@ public class Sala2D extends Sala {
 	public Sala2D(String id, int capacidad, String tipoProyeccion, int fila, int columna, TipoSonido tipoSonido) {
 		super(id, capacidad, tipoProyeccion, fila, columna);
 		this.tipoSonido = tipoSonido;
+		inicializarSillas(super.getFila(), super.getColumna());
 	}
 	public Sala2D() {
 		super();
 		this.tipoSonido = TipoSonido.INDEFINIDO;
+		inicializarSillas(super.getFila(), super.getColumna());
 
 	}
 	public TipoSonido getTipoSonido() {
