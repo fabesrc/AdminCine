@@ -34,7 +34,7 @@ public class Espectador {
 	}
 	@Override
 	public String toString() {
-		return "Identificación: " + id + "Nombre: " + nombre;
+		return "Identificación: " + id + ", Nombre: " + nombre;
 	}
 
 }

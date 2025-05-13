@@ -6,7 +6,12 @@ public class Main {
 
     public static void main(String[] args) {
         AdminCine admin = new AdminCine();
-
+        //Variables para salas:
+        String idSala;
+    	int capacidad;
+    	String tipoProyeccion;
+    	int fila;
+    	int columnas;
         byte opcion;
         do {
             opcion = seleccionarMenu();
@@ -22,22 +27,30 @@ public class Main {
                     String idFuncion = JOptionPane.showInputDialog("Ingrese el identificador de la funcion.");
                     String horarioFuncion = JOptionPane.showInputDialog("Ingrese el horario de la funcion.");
                     Pelicula pelicula= admin.seleccionarPelicula();
-                    Sala2D sala2D= new Sala2D("Sala 1", 150, "2D", 3, 3, TipoSonido.ESTEREO); //Para probar la creación de la funcion.
-                    admin.crearFuncion(idFuncion, horarioFuncion, pelicula, sala2D);
+                    Sala sala= admin.seleccionarSala();
+                    admin.crearFuncion(idFuncion, horarioFuncion, pelicula, sala);
                     break;
                     
                 case 3:
                 	opcion=seleccionarMenuSala();
                 	switch(opcion) {
 	                	case 1:
-	                		String idSala= JOptionPane.showInputDialog("Ingrese el ID de la sala.");
-	                		int capacidad= Integer.parseInt(JOptionPane.showInputDialog("Ingrese la capacidad de la sala."));
-	                		String tipoProyeccion= JOptionPane.showInputDialog("Ingrese el tipo de proyeccion.");
-	                		int fila= Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de filas."));
-	                		int columnas= Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de columnas."));
+	                		idSala= JOptionPane.showInputDialog("Ingrese el ID de la sala.");
+	                		capacidad= Integer.parseInt(JOptionPane.showInputDialog("Ingrese la capacidad de la sala."));
+	                		tipoProyeccion= JOptionPane.showInputDialog("Ingrese el tipo de proyeccion.");
+	                		fila= Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de filas."));
+	                		columnas= Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de columnas."));
 	                		admin.crearSala2D(idSala, capacidad, tipoProyeccion, fila, columnas, TipoSonido.ESTEREO);
 	                		break;
-	                	case 2://falta sala 3d
+	                	case 2://
+	                		idSala= JOptionPane.showInputDialog("Ingrese el ID de la sala.");
+	                		capacidad= Integer.parseInt(JOptionPane.showInputDialog("Ingrese la capacidad de la sala."));
+	                		tipoProyeccion= JOptionPane.showInputDialog("Ingrese el tipo de proyeccion.");
+	                		fila= Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de filas."));
+	                		columnas= Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de columnas."));
+	                		String tipoGafas= JOptionPane.showInputDialog("Ingrese el tipo de gafas.");
+	                		admin.crearSala3D(idSala, capacidad, tipoProyeccion, fila, columnas, tipoGafas);
+	                		break;
                 	}
                     break;
                 case 4:
@@ -58,12 +71,13 @@ public class Main {
                 	admin.verEspectadores();
                 	break;
                 case 9:
+                	Espectador espectador= admin.buscarSeleccionarEspectador();
+                	System.out.println(espectador);
+                	if(espectador==null)break;
                 	Funcion funcion= admin.seleccionarFuncion();
                 	System.out.println("Id funcion" + funcion);
                 	Silla silla= admin.seleccionarSilla(funcion);
                 	System.out.println(silla);
-                	Espectador espectador= admin.buscarSeleccionarEspectador();
-                	System.out.println(espectador);
                 	admin.comprarTicket(funcion, silla, espectador);
                     break;
                 case 0:

@@ -65,7 +65,7 @@ public class Silla {
 	}
 	
 	public String toString() {
-		return "ID Sila: " + id + "Fila: " + fila + "Columna: " + columna + "Espectador: " + espectador + "¿Silla Vacía?: " + esVacio;
+		return "ID Silla: " + id + "Fila: " + fila + "Columna: " + columna + "Espectador: " + espectador + "¿Silla Vacía?: " + esVacio;
 	}
 	
 

@@ -8,39 +8,13 @@ import javax.swing.JOptionPane;
 
 public abstract class Sala {
 	private String id;
-	private ArrayList<Silla> sillas;
+	protected ArrayList<Silla> sillas;
 	private int capacidad;
 	private String tipoProyeccion;
 	private int fila;
 	private int columna;
 	private ArrayList<Funcion> funciones;
 	
-	
-	
-
-	public void inicializarSillas(int fila, int columna) {
-	    this.sillas = new ArrayList<>();
-	    
-	    if(fila >= 1 && columna >=1  && columna <= 20 ) {
-	    	for (int i = 0; i < fila; i++) {
-	    		for (int j = 0; j < columna; j++) {
-	    			String id = i +""+ j;
-	    			this.sillas.add(new Silla(id, i, j, null, true));	
-	    		}
-
-	        }
-	    } else {
-	    	JOptionPane.showMessageDialog(null, "La sala debe de tener mínimo 5 filas y de 8 a 20 columnas. ");   }	   
-	    System.out.println("Inicializando sala con fila=" + fila + " columna=" + columna);
-	    System.out.println("Sala tiene " + sillas.size() + " sillas");
-	}
-	
-	
-	public void verSillas() {
-		for(Silla s:sillas) {
-			System.out.println(s.getId());
-		}
-	}
 	
 	public Sala(String id, int capacidad, String tipoProyeccion, int fila, int columna) {
 	    this.id = id;
@@ -49,22 +23,19 @@ public abstract class Sala {
 	    this.fila = fila;
 	    this.columna = columna;
 	    this.funciones = new ArrayList<>();
-	    inicializarSillas(fila, columna);
+	    this.sillas = new ArrayList<>();
 	}
 
 	
 	public Sala() {
 		super();
-		this.id = "";
-		
+		this.id = "";		
 		this.capacidad = 0;
 		this.tipoProyeccion = "";
 		this.fila = 0;
 		this.columna = 0;
 		this.funciones = new ArrayList<>();
-		
-	    inicializarSillas(this.fila, this.columna);
-		
+		this.sillas = new ArrayList<>();
 	}
 	public String getId() {
 		return id;
@@ -116,6 +87,28 @@ public abstract class Sala {
 		return "Id Sala: " + id + ", Capacidad: " + capacidad + ", Tipo proyección: " + tipoProyeccion;
 	}
 	
+	public void inicializarSillas(int fila, int columna) {
+	    this.sillas = new ArrayList<>();
+	    
+	    if(fila >= 1 && columna >=1  && columna <= 20 ) {
+	    	for (int i = 0; i < fila; i++) {
+	    		for (int j = 0; j < columna; j++) {
+	    			this.sillas.add(new Silla("F"+i+"C"+j,i,j,null,true));	
+	    		}
+
+	        }
+	    } else {
+	    	JOptionPane.showMessageDialog(null, "La sala debe de tener mínimo 5 filas y de 8 a 20 columnas. ");   
+	    }	   
+	    System.out.println("Inicializando sala con fila=" + fila + " columna=" + columna);
+	    System.out.println("Sala tiene " + sillas.size() + " sillas");
+	}
 	
+	
+	public void verSillas() {
+		for(Silla s:sillas) {
+			System.out.println(s.getId());
+		}
+	}
 	
 }
